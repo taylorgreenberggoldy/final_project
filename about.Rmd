@@ -7,5 +7,12 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(rsconnect)
+
 ```
 
+
+This is the link for my repo:
+https://github.com/taylorgreenberggoldy/final_project.git
+
+The data I am using for this project is all of the interactions that students do on our syllabus and Preceptors textbook.  One datasource will be DavidKane.info for the syllabus as well as the textbook website that is found on David Kane's github.  From this, we will hopefully be able to analyze how long people are spending on the sites, what are they looking at mostly, and when are peak times of use?
