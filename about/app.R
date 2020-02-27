@@ -1,25 +1,12 @@
----
-title: "About"
-author: "Taylor Greenberg Goldy"
-date: "2/26/2020"
-output: html_document
----
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(rsconnect)
-library(shiny)
-
-```
-
-
-This is the link for my repo:
-https://github.com/taylorgreenberggoldy/final_project.git
-
-The data I am using for this project is all of the interactions that students do on our syllabus and Preceptors textbook.  One datasource will be DavidKane.info for the syllabus as well as the textbook website that is found on David Kane's github.  From this, we will hopefully be able to analyze how long people are spending on the sites, what are they looking at mostly, and when are peak times of use?  
-However, for this assignment, Preceptor couldn't get google analytics to work so therefore, I am granted an extension for one week to find data!
-
-```{r}
 library(shiny)
 
 ui <- navbarPage(
@@ -68,7 +55,4 @@ server <- function(input, output) {
         hist(x, col = 'darkgray', border = 'white')
     })
 }
-
-shinyApp(ui = ui, server = server)
-```
 
