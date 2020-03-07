@@ -3,12 +3,22 @@ title: "About"
 author: "Taylor Greenberg Goldy"
 date: "2/26/2020"
 output: html_document
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(rsconnect)
 library(shiny)
+library(janitor)
+library(tidyverse)
+
+storesearch <- read.csv("raw_data/storefront_searches_2020-02-29_2020-03-07.csv") %>%
+    clean_names()
+    
+visits <- read.csv("raw_data/visits_2019-01-01_2019-12-31.csv") %>%
+    clean_names()
+
 
 ```
 
@@ -16,8 +26,10 @@ library(shiny)
 This is the link for my repo:
 https://github.com/taylorgreenberggoldy/final_project.git
 
-The data I am using for this project is all of the interactions that students do on our syllabus and Preceptors textbook.  One datasource will be DavidKane.info for the syllabus as well as the textbook website that is found on David Kane's github.  From this, we will hopefully be able to analyze how long people are spending on the sites, what are they looking at mostly, and when are peak times of use?  
-However, for this assignment, Preceptor couldn't get google analytics to work so therefore, I am granted an extension for one week to find data!
+The data I am using for this project is looking at the behavior of customers and interactions they have on a shopping website that I have access to.  In this data, I'll be able to see how often people are shopping, what are they shopping for as well as what are they searching on the website for.  Through this study, I can hopefully be able to make suggestions to how to improve the overal UX of the site to let people navigate it more thoroughly.  I am slowly getting access to more of the data and will be able to add more files into this project however for now, these two provide sufficient data to get started.
+
+To pull this data, I'm looking at shopify as well as google analytics that pulls basic measurements off of the website of the e-commerce site.
+
 
 ```{r}
 library(shiny)
