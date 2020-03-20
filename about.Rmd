@@ -12,6 +12,7 @@ library(rsconnect)
 library(shiny)
 library(janitor)
 library(tidyverse)
+library(ggplot2)
 
 storesearch <- read.csv("raw_data/storefront_searches_2020-02-29_2020-03-07.csv") %>%
     clean_names()
@@ -30,8 +31,35 @@ The data I am using for this project is looking at the behavior of customers and
 
 To pull this data, I'm looking at shopify as well as google analytics that pulls basic measurements off of the website of the e-commerce site.
 
+```{r first plot}
 
-```{r}
+# For this plot, I wanted to see for each of the months, what was the turnover
+# rate and see how many people visited the site, put something in their cart,
+# and actually followed through with the process.  To do that, I had to filter
+# down my data to only look at the first of each month.  Then I needed to
+# reformat my data to tidy to visualize.
+
+purchases <- visits %>%
+    filter(day == "2019-01-01"| day == "2019-02-01" | day == "2019-03-01" |  day == "2019-04-01" |  day == 
+               "2019-05-01" | day == "2019-06-01" | day == "2019-07-01" | day == "2019-08-01" |  
+               day == "2019-09-01" |  day == "2019-10-01" |  day == "2019-11-01" |  day == "2019-12-01") %>%
+    pivot_longer(cols = c(total_sessions, total_carts, total_checkouts, total_orders_placed, total_conversion), names_to = "action") 
+    
+# Then I could plot the results here with month on the x axis and the number of
+# actions on the y axis.  I was having trouble renaming the dates to just the
+# month name and would love some help on that! I also need some help in
+# reordering my bars
+
+ggplot(purchases, aes(x = day, y = value, fill = action))+
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(title = "Shopping Turnover for Online Shop",
+       y= "Actions", x = "Month")+
+    theme(axis.text.x=element_text(angle=45, hjust=1))
+
+```
+
+
+```{r shiny}
 library(shiny)
 
 ui <- navbarPage(
