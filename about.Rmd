@@ -55,7 +55,7 @@ purchases <- visits %>%
 ggplot(purchases, aes(x = day, y = value, fill = action))+
     geom_bar(stat = "identity", position = "dodge") +
     labs(title = "Shopping Turnover for Online Shop",
-       y= "Actions", x = "Month")+
+      y= "Actions", x = "Month")+
     theme(axis.text.x=element_text(angle=45, hjust=1))
 
 ```
